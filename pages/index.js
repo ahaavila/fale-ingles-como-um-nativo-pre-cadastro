@@ -1,15 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import logo from '../public/assets/images/Logo-DQD-Fundo-Claro.png';
-import lorena from '../public/assets/images/lorena.jpeg';
-import { Container, Grid, TextField, Box, Button, Alert, Snackbar } from '@mui/material';
+import { TextField, Box, Button, Alert, Snackbar } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
-import { borderRadius, style } from '@mui/system';
+import { useState } from 'react';
 import axios from 'axios';
+
+import logo from '../public/assets/images/Logo-DQD-Fundo-Claro.png';
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const [name, setName] = useState();
@@ -114,16 +111,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Fale inglês como um nativo - Lorena Brandão</title>
-        <meta name="author" content="Lorena Brandão" />
-        <meta name="description" content="Fale inglês como um nativo" />
-        <meta 
-          name="keywords" 
-          content="inglês, curso, curso de inglês, aula de inglês, aula, escola de ingles perto de mim, wiseup escola de ingles, 123 curso de ingles, curso de ingles poliglota, curso de ingles montreal, ucla curso de ingles, aula particular de ingles sao paulo, curso de inglês zenaric completo, " 
-        />
-        <meta name="reply-to" content="lorenabrandaosoueu@gmail.com"></meta>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        
       </Head>
 
       <ThemeProvider theme={theme}>
