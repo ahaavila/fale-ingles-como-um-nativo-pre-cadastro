@@ -67,6 +67,7 @@
   .teste > h1 {
     text-align: center;
     margin-block: 3rem;
+    padding: 1rem;
   }
 
   .formulario {

@@ -104,6 +104,14 @@ export default function Home() {
           },
         },
       },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            height: '4rem',
+            fontSize: '1rem'
+          }
+        }
+      }
     },
   });
 
@@ -167,19 +175,22 @@ export default function Home() {
               padding="2rem"
               margin="0 auto"
             >
-              <TextField 
-                id="name"
-                className="inputs"
-                label="Como você gostaria de ser chamado?"
-                variant="outlined" 
-                color='success'
-                value={name}
-                onChange={e => setName(e.target.value)}
-                error={validateName(name)}
-                helperText={validateName(name) && 'O nome deve conter no mínimo 3 e no máximo 15 caracteres e somente letras.'}
-                required
-                fullWidth
-              />
+                <TextField 
+                  id="name"
+                  className="inputs"
+                  label="Como você gostaria de ser chamado?"
+                  variant="outlined" 
+                  color='success'
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  error={validateName(name)}
+                  helperText={validateName(name) && 'O nome deve conter no mínimo 3 e no máximo 15 caracteres e somente letras.'}
+                  required
+                  fullWidth
+                  sx={{
+                    '& > :not(style)': { fontSize: '1.5rem' }
+                  }}
+                />
               <TextField 
                 id="email"
                 className="inputs" 
@@ -193,6 +204,9 @@ export default function Home() {
                 helperText={validateEmail(email) && 'E-mail inválido!'}
                 required 
                 fullWidth
+                sx={{
+                  '& > :not(style)': { fontSize: '1.5rem' }
+                }}
               />
               <Button 
                 className="inputs"
@@ -200,6 +214,9 @@ export default function Home() {
                 color="success"
                 onClick={() => sendMail()}
                 disabled={(name?.length > 2) && (!validateEmail(email)) ? false : true}
+                sx={{
+                  '& > :not(style)': { fontSize: '2rem', height: '2rem' }
+                }}
               >
                 { isSendingEmail ? 'CADASTRANDO...' : 'QUERO ENTRAR PARA A LISTA DE ESPERA' }
               </Button>
