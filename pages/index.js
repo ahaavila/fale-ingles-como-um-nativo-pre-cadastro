@@ -37,7 +37,7 @@ export default function Home() {
         }
       });
 
-      const response = await axios.post('http://fale-ingles-como-um-nativo-pre-cadastro.vercel.app/api/user', {
+      const response = await axios.post('https://fale-ingles-como-um-nativo-pre-cadastro.vercel.app/api/user', {
         name,
         email,
       });
