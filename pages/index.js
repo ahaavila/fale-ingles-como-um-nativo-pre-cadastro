@@ -37,7 +37,7 @@ export default function Home() {
         }
       });
 
-      const response = await axios.post('http://localhost:3000/api/user', {
+      const response = await axios.post('http://fale-ingles-como-um-nativo-pre-cadastro.vercel.app/api/user', {
         name,
         email,
       });
@@ -111,7 +111,6 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Fale inglês como um nativo - Lorena Brandão</title>
-        
       </Head>
 
       <ThemeProvider theme={theme}>
