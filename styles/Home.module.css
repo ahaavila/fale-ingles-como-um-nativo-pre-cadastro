@@ -1,18 +1,31 @@
 .container {
-  background-image: url('../public/assets/images/fundo5.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: opacity(70%);
-  width: 100vw;
   height: 100vh;
 
+  background-color: #64e1f3;
   display: grid;
-  grid-template: "title formulario" 1fr;
+  grid-template: "title form" 1fr;
   padding: 2rem;
 }
 
 .title {
   grid-area: title;
+}
+
+.h1 {
+  font-size: 3.5rem;
+  color: #2d3f75;
+}
+
+.aulao {
+  font-family: Courgette sans-serif;
+}
+
+.get {
+  font-family: Patua One serif;
+}
+
+.englishImage {
+  width: 30%;
 }
 
 .teste {
@@ -22,7 +35,7 @@
   flex-direction: column;
   align-items: center;
 
-  margin-block-start: 8rem;
+  /* margin-block-start: 8rem; */
 }
 
 .teste > h1 {
@@ -30,14 +43,14 @@
   margin-top: 7rem;
 }
 
-.formulario {
-  grid-area: formulario;
+.form {
+  grid-area: form;
 
   margin-block-start: 6rem;
   padding: 1rem;
 }
 
-.formulario > h2 {
+.form > h2 {
   text-align: start;
   padding: 0 7rem;
 }
@@ -52,7 +65,7 @@
     background-color: #64e1f3;
     background-image: none;
     filter: opacity(100%);
-    padding: 0px;
+    padding: 0;
   }
 
   .title {
@@ -64,17 +77,21 @@
     margin-block-start: 5rem;
   }
 
+  #testeImg {
+    width: 80%;
+  }
+
   .teste > h1 {
     text-align: center;
     margin-block: 3rem;
     padding: 1rem;
   }
 
-  .formulario {
+  .form {
     margin-block-start: 2rem;
   }
 
-  .formulario > h2 {
+  .form > h2 {
     text-align: center;
     padding: 0 2rem;
   }
