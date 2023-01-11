@@ -130,7 +130,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.form}>
-          <Link href="/Payment">
+          <Link href="/payment">
               <button>Fazer Inscrição</button>
           </Link>
       </div>

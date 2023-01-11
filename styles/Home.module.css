@@ -1,7 +1,7 @@
 .container {
   height: 100vh;
 
-  background-color: #64e1f3;
+
   display: grid;
   grid-template: "title form" 1fr;
   padding: 2rem;
