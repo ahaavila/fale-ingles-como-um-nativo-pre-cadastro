@@ -125,6 +125,7 @@
     margin-block-start: 2rem;
     display: flex;
     align-items: center;
+    padding: 1rem;
   }
 
   .form > h2 {

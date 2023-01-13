@@ -40,7 +40,7 @@ export default function Payment() {
                 <span className="material-symbols-outlined">
                     shopping_cart_checkout
                 </span>
-                <span>R$ 30,00</span>
+                <span>R$ 27,00</span>
             </button>
         </header>
           <div className={styles.container}>
@@ -79,16 +79,17 @@ export default function Payment() {
                     <h4>Transferência:</h4>
                     <div>
                         <ul className={styles.paymentList}>
-                            <li><span>Agência:</span> 111111</li>
-                            <li><span>Conta:</span> 222222</li>
-                            <li><span>CPF:</span> 333333333</li>
+                            <li><span>Banco:</span> NuBank (0260)</li>
+                            <li><span>Agência:</span> 0001</li>
+                            <li><span>Conta:</span> 4538018-1</li>
+                            <li><span>CPF:</span> 03885590638</li>
                             <li><span>Nome:</span> Lorena Brandão de Castro</li>
                         </ul>
                     </div>
                     <h4>Pix:</h4>
                     <div>
                         <ul className={styles.paymentList}>
-                            <li><span>CPF:</span> 11111111</li>
+                            <li><span>CPF:</span> 03885590638</li>
                         </ul>
                     </div>
                 </div>
