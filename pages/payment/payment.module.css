@@ -3,33 +3,39 @@
     display: grid;
     grid-template: "cadastro info" 1fr
                     "payment info" 2fr;
-    padding: 2rem;
+    padding: 4rem 2rem;
     color: #2d3f75;
+    justify-items: end;
 }
 
 .cadastro {
     grid-area: cadastro;
+    width: 90%;
+    font-size: 1.2rem;
 }
 
 .cadastroForm {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin-block-end: 2rem;
 }
 
+.cadastroForm label{
+    margin-block-start: 1rem;
+}
+
 .cadastroForm input {
-    height: 2rem;
+    height: 2.5rem;
     border: none;
     margin-block: 0.5rem 1rem;
+    border-radius: 0.3rem;
 }
 
 .payment {
     grid-area: payment;
-}
-
-.paymentList {
-    list-style-type: none;
+    width: 80%;
+    font-size: 1.3em;
 }
 
 .paymentList li span {
@@ -38,47 +44,63 @@
 
 .info {
     grid-area: info;
+
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin-inline-end: 5rem;
 }
 
 .infoButton {
-    width: 20rem;
-    height: 3rem;
+    width: 25rem;
+    height: 4rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: #ff8c60;
+    background-color: #4154f1;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #2d3f75;
+    color: #ffffff;
+    margin-top: 4rem;
 }
 
 .infoButton:hover {
-    background-color: #8b4d35;
+    background-color: #2D39A4FF;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-block-start: 3rem;
+}
+
+.header strong {
+    font-family: Courgette, sans-serif;
+    font-size: 2rem;
+    color: #2d3f75;
+}
+
+.cart {
+    height: 2.7rem;
+    width: 9rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #4154f1;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: 0 15px 30px rgb(65 84 241 / 40%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 @media (max-width: 768px) {
-    .header {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-block-start: 1.25rem;
-    }
-
     .header strong {
-        font-family: Courgette;
-    }
-
-    .cart {
-        display: flex;
-        align-items: center;
-        border: none;
-        box-shadow: -1px 2px 21px -2px rgb(0 0 0 / 75%);
-        border-radius: 0.35rem;
-        padding: 0.5rem;
-        width: 7rem;
-        justify-content: space-around;
-        background-color: #64e1f3;
-        color: #047816;
+        font-size: 1.2rem;
     }
 
     .container {
@@ -87,12 +109,17 @@
         grid-template: "cadastro" 1fr
                         "payment" 1fr
                         "info" 1fr;
-        padding: 2rem;
+        padding: 2rem 0;
+        justify-items: center;
     }
 
     .cadastro {
-        border-bottom: 6px groove #ff8c60;
+        border-bottom: 6px groove #4154f1;
         margin-block-end: 1rem;
+    }
+
+    .cadastroForm {
+        width: 100%;
     }
 
     .cadastroFormDiv {
@@ -102,8 +129,18 @@
     }
 
     .payment {
-        border-bottom: 6px groove #ff8c60;
+        border-bottom: 6px groove #4154f1;
         margin-block-end: 1rem;
+    }
+
+    .info {
+        padding: 2rem;
+        margin-inline-end: 0;
+    }
+
+    .infoButton {
+        width: 20rem;
+        height: 4rem;
     }
 
     .infoContent {
@@ -113,7 +150,7 @@
     }
 
     .infoContent button {
-        margin-block-end: 2rem;
+        margin-block: 1rem 2rem;
     }
 }
 
@@ -123,6 +160,7 @@
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
+        width: 80%;
     }
 
     .cadastro h3 {
