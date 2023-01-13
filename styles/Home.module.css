@@ -46,10 +46,7 @@
 
 .form {
   grid-area: form;
-
-  padding: 1rem;
   font-family: Patua One, serif;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
