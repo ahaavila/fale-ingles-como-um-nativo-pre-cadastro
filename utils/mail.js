@@ -19,8 +19,6 @@ export const sendMail = async(name, email, phone) => {
       phone,
     });
 
-    console.log('response', response);
-
     return response;
   } catch (err) {
     console.error(err);
