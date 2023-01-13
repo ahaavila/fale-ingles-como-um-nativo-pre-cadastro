@@ -6,7 +6,6 @@ const client = new MongoClient('mongodb+srv://augusto:guv9014@omnistack.cebkf.mo
 });
 
 export default async function connect() {
-  // if (!client.isConnected()) await client.connect();
   await client.connect();
 
   const db = client.db('curso-lorena');

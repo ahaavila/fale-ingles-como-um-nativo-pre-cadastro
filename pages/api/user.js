@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   });
 
   if (req.method === 'POST') {
-    const { email, name } = req.body;
+    const { email, name, phone } = req.body;
     
     if (!name || !email) {
       res.status(400).json({ error: 'Nome or Email is missing!' });
@@ -29,6 +29,7 @@ export default async function handler(req, res) {
     await db.collection('pre-cadastro').insertOne({
       email,
       name,
+      phone,
     });
     res.status(200).json({ message: 'Success!' });
   } else {
