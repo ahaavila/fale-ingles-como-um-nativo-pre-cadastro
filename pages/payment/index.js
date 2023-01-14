@@ -98,9 +98,9 @@ export default function Payment() {
             <div className={styles.info}>
                 <h2>Passo 3: Considerações Finais</h2>
                 <div className={styles.infoContent}>
-                    <p>Para que possamos confirmar sua inscrição, você deverá clicar no botão <strong>Finalizar Inscrição</strong></p>
-                    <p>e enviar o comprovante do pagamento para o email: <strong>lorenabrandaosoueu@gmail.com</strong></p>
-                    <p>com o email que foi feita a inscrição.</p>
+                    <p>Para que possamos confirmar sua inscrição, você deverá clicar no botão <strong>Finalizar Inscrição</strong> e enviar o</p>
+                    <p>comprovante do pagamento para o email: <strong>lorenabrandaosoueu@gmail.com</strong></p>
+                    <p><small style={{ color: 'red', textAlign: 'start' }}>*Email cadastrado na inscrição.</small></p>
                     <button
                         className={styles.infoButton}
                         onClick={() => mail(name, email, phone)}
