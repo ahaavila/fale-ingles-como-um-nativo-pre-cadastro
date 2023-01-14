@@ -9,6 +9,17 @@
     font-family: Patua One, serif;
 }
 
+.container h1 {
+    padding: 0 1rem;
+    text-align: justify;
+}
+
 .image {
     margin-block-start: 3rem;
+}
+
+@media (max-width: 768px) {
+    .container h1 {
+        margin: 1rem 0;
+    }
 }
