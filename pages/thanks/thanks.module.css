@@ -9,7 +9,7 @@
     font-family: Patua One, serif;
 }
 
-.container h1 {
+.container h2 {
     padding: 0 1rem;
     text-align: justify;
 }
@@ -19,7 +19,8 @@
 }
 
 @media (max-width: 768px) {
-    .container h1 {
-        margin: 1rem 0;
+    .container h2 {
+        margin: 0;
+        text-align: center;
     }
 }
