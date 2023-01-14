@@ -23,12 +23,18 @@ export default function Payment() {
 
     async function mail(name, email,  phone)  {
         setLoading(true);
-        const response = await sendMail(name, email,  phone);
-        if (response.status === 200)  {
+        if (nameError !== '' || emailError !== '') {
+            setError('Nome ou email inválido!');
             setLoading(false);
-            await router.push('/thanks');
         } else {
-            setError(response.error);
+            setError('');
+            const response = await sendMail(name, email,  phone);
+            if (response.status === 200)  {
+                setLoading(false);
+                await router.push('/thanks');
+            } else {
+                setError(response.error);
+            }
         }
     }
 
@@ -67,8 +73,7 @@ export default function Payment() {
                         />
                         <small style={{ color: 'red' }}>{emailError}</small>
                         <label>Whatsapp</label>
-                        <input name="phone" type="tel" onChange={e => setPhone(e.target.value)} />
-                        <small style={{ color: 'red' }}>{error}</small>
+                        <input name="phone" type="number" onChange={e => setPhone(e.target.value)} />
                     </form>
                 </div>
             </div>
@@ -107,6 +112,7 @@ export default function Payment() {
                     >
                         {loading ? 'Enviando...' : 'Finalizar Inscrição'}
                     </button>
+                    <small style={{ color: 'red' }}>{error}</small>
                 </div>
             </div>
           </div>
