@@ -3,8 +3,17 @@ import Image from 'next/image'
 import teste from '../public/assets/images/teste.png';
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 export default function Home() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
+        window.onresize = function () {
+            window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
+        }
+    }, []);
 
   return (
     <div className={styles.container}>
@@ -21,12 +30,13 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.form}>
-          <h1>Aulão do GET</h1>
+          {!isMobile &&
+              <h1>Aulão do GET</h1>
+          }
           <p><i>Se deseja avançar no inglês, está no lugar certo!</i></p>
           <p className={styles.textBreak}>
-              O verbo GET é amplamente usado pelos nativos no <br />
-              dia-a-dia, com diversos significados. E neste AULÃO eu <br />
-              irei abordar estas diferenças e muito mais!
+              O verbo GET é amplamente usado pelos nativos no dia-a-dia, com<br />
+              diversos significados. E neste AULÃO, eu irei abordar estas diferenças e muito mais!<br />
           </p>
           <h1>Sobre o Aulão:</h1>
           <ul className={styles.formUl}>
@@ -38,12 +48,12 @@ export default function Home() {
           </ul>
 
           <div className={styles.duvida}>
-              <h3>Dúvida sobre o Aulão</h3>
+              <h3>Dúvida sobre o Aulão:</h3>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               <p>"- Lorena! Sou iniciante, o AULÃO é para mim?"</p>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <p>"- Sim!!! O AULÃO é para todos os níveis. Porque eu acredito que desde o <br />
-                  início do aprendizado, o aluno precisa aprender a se comunicar como um nativo. <br />
+              <p>"- Sim!!! O AULÃO é para todos os níveis. Porque eu acredito que desde <br />
+                  o início do aprendizado, o aluno precisa aprender a se comunicar como um nativo. <br />
               </p>
           </div>
 

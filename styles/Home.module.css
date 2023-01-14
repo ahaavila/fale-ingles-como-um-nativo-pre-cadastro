@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 15px 30px rgb(65 84 241 / 40%);
+  box-shadow: 0 15px 30px rgb(65 84 241 / 40%);
   margin-block-start: 1rem;
 }
 
@@ -122,7 +122,6 @@
   }
 
   .form {
-    margin-block-start: 2rem;
     display: flex;
     align-items: center;
     padding: 1rem;
