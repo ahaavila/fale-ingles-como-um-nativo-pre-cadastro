@@ -4,15 +4,18 @@ import teste from '../public/assets/images/teste.png';
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import {useEffect, useState} from "react";
+import {checkIfCountryIsBrazil} from "../utils/utils";
 
 export default function Home() {
     const [isMobile, setIsMobile] = useState(false);
+    const [isFromBrazil, setIsFromBrazil] = useState(false);
 
     useEffect(() => {
         window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
         window.onresize = function () {
             window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
         }
+        setIsFromBrazil(checkIfCountryIsBrazil());
     }, []);
 
   return (
@@ -40,11 +43,11 @@ export default function Home() {
           </p>
           <h1>Sobre o Aulão:</h1>
           <ul className={styles.formUl}>
-              <li>Acontecerá dia 25/01/2023, 19 horas (horário de Brasília);</li>
+              <li>Acontecerá dia { isFromBrazil ? '25/01/2023, 19 horas (horário de Brasília)' : '30/01/2023, 20 horas (horário de Portugal)' };</li>
               <li>Pelo ZOOM;</li>
               <li>Com duração de 2 horas (um intervalo de 15 minutos);</li>
               <li>Material de apoio e lista de exercícios enviados para o email cadastrado, antes do AULÃO;</li>
-              <li>Valor: 27,00.</li>
+              <li>Valor: { isFromBrazil ? 'R$ 27,00' : '10,00€' }.</li>
           </ul>
 
           <div className={styles.duvida}>

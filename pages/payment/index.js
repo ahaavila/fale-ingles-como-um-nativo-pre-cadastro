@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './payment.module.css';
-import {sendMail, validateEmail, validateName} from "../../utils/mail";
+import { sendMail, validateEmail, validateName } from "../../utils/mail";
 import { useRouter } from 'next/router'
+import { checkIfCountryIsBrazil } from "../../utils/utils";
+import InputMask from 'react-input-mask';
 export default function Payment() {
     const [name, setName] = useState('');
     const [nameError, setNameError] = useState('');
@@ -10,6 +12,11 @@ export default function Payment() {
     const [phone, setPhone] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isFromBrazil, setIsFromBrazil] = useState(false);
+
+    useEffect(() => {
+        setIsFromBrazil(checkIfCountryIsBrazil());
+    }, []);
 
     const router = useRouter();
 
@@ -19,6 +26,30 @@ export default function Payment() {
 
     function nameValidate(name) {
         validateName(name) ? setNameError('Nome tem que ter mais de 3 caracteres') : setNameError('');
+    }
+
+    function disableButton() {
+        return name === '' || email === '';
+    }
+
+    const brazilPaymentData = {
+        transfer: {
+            bank: 'NuBank (0260)',
+            agency: '0001',
+            account: '4538018-1',
+            CPF: '03885590638',
+            name: 'Lorena Brandão de Castro',
+        },
+        pix: {
+            CPF: '03885590638',
+        }
+    }
+
+    const otherPaymentData = {
+        transfer: {
+            IBAN: 'PT50003300004566367295605',
+            name: 'Augusto Henrique Alves de Ávila'
+        }
     }
 
     async function mail(name, email,  phone)  {
@@ -46,7 +77,7 @@ export default function Payment() {
                 <span className="material-symbols-outlined">
                     shopping_cart_checkout
                 </span>
-                <span>R$ 27,00</span>
+                <span>{ isFromBrazil ? 'R$ 27,00' : '10,00€' }</span>
             </button>
         </header>
           <div className={styles.container}>
@@ -73,7 +104,11 @@ export default function Payment() {
                         />
                         <small style={{ color: 'red' }}>{emailError}</small>
                         <label>Whatsapp</label>
-                        <input name="phone" type="number" onChange={e => setPhone(e.target.value)} />
+                        <InputMask
+                            name="phone"
+                            mask={isFromBrazil ? '(99) 99999-9999' : '999 999 999'}
+                            onChange={e => setPhone(e.target.value)}
+                        />
                     </form>
                 </div>
             </div>
@@ -81,22 +116,39 @@ export default function Payment() {
             <div className={styles.payment}>
                 <h2>Passo 2: Pagamento</h2>
                 <div className={styles.paymentContent}>
-                    <h4>Transferência:</h4>
-                    <div>
-                        <ul className={styles.paymentList}>
-                            <li><span>Banco:</span> NuBank (0260)</li>
-                            <li><span>Agência:</span> 0001</li>
-                            <li><span>Conta:</span> 4538018-1</li>
-                            <li><span>CPF:</span> 03885590638</li>
-                            <li><span>Nome:</span> Lorena Brandão de Castro</li>
-                        </ul>
-                    </div>
-                    <h4>Pix:</h4>
-                    <div>
-                        <ul className={styles.paymentList}>
-                            <li><span>CPF:</span> 03885590638</li>
-                        </ul>
-                    </div>
+                    {isFromBrazil ?
+                        (
+                            <>
+                                <h4>Transferência:</h4>
+                                <div>
+                                    <ul className={styles.paymentList}>
+                                        <li><span>Banco:</span> { brazilPaymentData.transfer.bank }</li>
+                                        <li><span>Agência:</span> { brazilPaymentData.transfer.agency }</li>
+                                        <li><span>Conta:</span> { brazilPaymentData.transfer.account }</li>
+                                        <li><span>CPF:</span> { brazilPaymentData.transfer.CPF }</li>
+                                        <li><span>Nome:</span> { brazilPaymentData.transfer.name }</li>
+                                    </ul>
+                                </div>
+                                <h4>Pix:</h4>
+                                <div>
+                                    <ul className={styles.paymentList}>
+                                        <li><span>CPF:</span> { brazilPaymentData.pix.CPF }</li>
+                                    </ul>
+                                </div>
+                            </>
+                        ) :
+                        (
+                            <>
+                                <h4>Transferência:</h4>
+                                <div>
+                                    <ul className={styles.paymentList}>
+                                        <li><span>IBAN:</span> { otherPaymentData.transfer.IBAN }</li>
+                                        <li><span>Nome:</span> { otherPaymentData.transfer.name }</li>
+                                    </ul>
+                                </div>
+                            </>
+                        )
+                    }
                 </div>
             </div>
 
@@ -108,11 +160,13 @@ export default function Payment() {
                     <p><small style={{ color: 'red', textAlign: 'start' }}>*Enviar pelo email cadastrado na inscrição.</small></p>
                     <button
                         className={styles.infoButton}
-                        onClick={() => mail(name, email, phone)}
+                        type="button"
+                        onClick={() => mail(name, email, phone, isFromBrazil)}
+                        disabled={disableButton()}
                     >
                         {loading ? 'Enviando...' : 'Finalizar Inscrição'}
                     </button>
-                    <small style={{ color: 'red' }}>{error}</small>
+                    <small style={{ color: 'red', display: 'block', marginBlockStart: '1rem' }}>{error}</small>
                 </div>
             </div>
           </div>

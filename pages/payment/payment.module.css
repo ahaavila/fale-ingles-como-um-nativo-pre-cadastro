@@ -30,6 +30,7 @@
     border: none;
     margin-block: 0.5rem 1rem;
     border-radius: 0.3rem;
+    font-size: 1.2rem;
 }
 
 .payment {
@@ -62,6 +63,16 @@
     font-weight: bold;
     color: #ffffff;
     margin-top: 4rem;
+}
+
+.infoButton:disabled {
+    background-color: #484848;
+    cursor: default;
+}
+
+.infoButton:disabled:hover {
+    background-color: #484848;
+    cursor: default;
 }
 
 .infoButton:hover {

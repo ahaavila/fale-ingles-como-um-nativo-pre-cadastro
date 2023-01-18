@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const sendMail = async(name, email, phone) => {
+export const sendMail = async(name, email, phone, isFromBrazil) => {
   try {
     await axios.post('https://api.emailjs.com/api/v1.0/email/send', {
       user_id: 'user_YWHRL5p0UldXqQkZxq8QE',
@@ -13,13 +13,12 @@ export const sendMail = async(name, email, phone) => {
       }
     });
 
-    const response = await axios.post('https://aulao-get-lorena-brandao.vercel.app/api/user', {
+    return await axios.post('https://aulao-get-lorena-brandao.vercel.app/api/user', {
       name,
       email,
       phone,
+      isFromBrazil,
     });
-
-    return response;
   } catch (err) {
     console.error(err);
     return ({ error: 'Falha ao enviar o email' })
@@ -33,9 +32,5 @@ export function validateEmail(email) {
 }
 
 export function validateName(validName) {
-  if (validName?.length < 3) {
-    return true;
-  } else {
-    return false;
-  }
+  return validName?.length < 3;
 }
